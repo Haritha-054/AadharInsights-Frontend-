@@ -13,7 +13,7 @@ export default function KPICards() {
   }
 
   return (
-    <div className="fade-up" style={{ display: "flex", gap: "16px", marginBottom: "20px" }}>
+    <div className="fade-up kpi-container">
 
       <div className="card red" style={{ padding: "16px", flex: 1 }}>
         <h3 style={{ fontSize: "1.1rem", margin: "0 0 8px 0" }}>High Friction</h3>

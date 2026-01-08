@@ -214,7 +214,7 @@ export default function DistrictTable({ data }) {
         Each district appears only once with its highest predicted demand level.
       </p>
 
-      <div style={{ display: "flex", gap: "12px", marginBottom: "24px" }}>
+      <div style={{ display: "flex", gap: "12px", marginBottom: "24px", flexWrap: "wrap" }}>
         <input
           placeholder="Search district or state..."
           value={search}
@@ -225,6 +225,7 @@ export default function DistrictTable({ data }) {
             border: "1px solid #e2e8f0",
             fontSize: "0.95rem",
             width: "300px",
+            maxWidth: "100%", // Responsive constraint
             outline: "none",
             background: "#f8fafc",
             transition: "all 0.2s",
@@ -243,7 +244,8 @@ export default function DistrictTable({ data }) {
             outline: "none",
             background: "#f8fafc",
             cursor: "pointer",
-            boxShadow: "0 2px 4px rgba(0,0,0,0.02)"
+            boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
+            maxWidth: "100%" // Responsive constraint
           }}
         >
           {states.map((s) => (
@@ -262,45 +264,47 @@ export default function DistrictTable({ data }) {
           overflow: "hidden"
         }}
       >
-        <table style={{ width: "100%", borderCollapse: "separate", borderSpacing: "0" }}>
-          <thead>
-            <tr>
-              <th style={headerStyle}>State</th>
-              <th style={headerStyle}>District</th>
-              <th style={headerStyle}>Demand Level</th>
-              <th style={headerStyle}>Recommended Action</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {filteredData.map((row, index) => (
-              <tr key={index} style={{ borderBottom: "1px solid #f1f5f9" }}>
-                <td style={cellStyle}>{row.state}</td>
-                <td style={cellStyle}>{row.district}</td>
-                <td style={cellStyle}>
-                  <span className={getBadgeClass(row.Next_Month_Demand)}>
-                    {row.Next_Month_Demand}
-                  </span>
-                </td>
-                <td style={cellStyle}>{row.recommended_action}</td>
-              </tr>
-            ))}
-
-            {/* ✅ EMPTY STATE IMAGE */}
-            {filteredData.length === 0 && (
+        <div className="table-responsive">
+          <table style={{ width: "100%", borderCollapse: "separate", borderSpacing: "0", minWidth: "800px" }}>
+            <thead>
               <tr>
-                <td colSpan="4" style={{ textAlign: "center", padding: "40px" }}>
-                  <img
-                    src="https://illustrations.popsy.co/gray/searching.svg"
-                    alt="No data"
-                    style={{ width: "160px", marginBottom: "12px", opacity: 0.8 }}
-                  />
-                  <div style={{ color: "#94a3b8", fontWeight: "500" }}>No matching districts found</div>
-                </td>
+                <th style={headerStyle}>State</th>
+                <th style={headerStyle}>District</th>
+                <th style={headerStyle}>Demand Level</th>
+                <th style={headerStyle}>Recommended Action</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {filteredData.map((row, index) => (
+                <tr key={index} style={{ borderBottom: "1px solid #f1f5f9" }}>
+                  <td style={cellStyle}>{row.state}</td>
+                  <td style={cellStyle}>{row.district}</td>
+                  <td style={cellStyle}>
+                    <span className={getBadgeClass(row.Next_Month_Demand)}>
+                      {row.Next_Month_Demand}
+                    </span>
+                  </td>
+                  <td style={cellStyle}>{row.recommended_action}</td>
+                </tr>
+              ))}
+
+              {/* ✅ EMPTY STATE IMAGE */}
+              {filteredData.length === 0 && (
+                <tr>
+                  <td colSpan="4" style={{ textAlign: "center", padding: "40px" }}>
+                    <img
+                      src="https://illustrations.popsy.co/gray/searching.svg"
+                      alt="No data"
+                      style={{ width: "160px", marginBottom: "12px", opacity: 0.8 }}
+                    />
+                    <div style={{ color: "#94a3b8", fontWeight: "500" }}>No matching districts found</div>
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

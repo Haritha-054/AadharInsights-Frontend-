@@ -5,6 +5,7 @@ body {
   background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
   color: #1e293b;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Glassmorphism Card Style */
@@ -591,4 +592,228 @@ hr {
     grid-template-columns: 1fr;
     /* Single column on mobile */
   }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .hero-container {
+    padding: 16px;
+  }
+}
+
+/* --- NAVBAR & RESPONSIVENESS --- */
+.navbar-container {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 94px;
+  background: linear-gradient(90deg, #F6B323 0%, #F05A28 50%, #E91E63 100%);
+  backdrop-filter: blur(10px);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  z-index: 9999;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(240, 90, 40, 0.3);
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 2;
+}
+
+.nav-logo {
+  height: 42px;
+  object-fit: contain;
+  background: white;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+}
+
+.brand-subtitle {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Desktop Menu */
+.desktop-menu {
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-item {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Logout Button */
+.logout-btn {
+  background: white;
+  border: none;
+  color: #dc2626;
+  padding: 10px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+  transition: transform 0.2s;
+}
+
+/* Hamburger & Mobile Menu (Default Hidden) */
+.hamburger-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 94px;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  padding: 20px;
+  flex-direction: column;
+  gap: 12px;
+  border-bottom: 2px solid #E91E63;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: 9998;
+}
+
+.mobile-nav-item {
+  background: transparent;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #334155;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.mobile-nav-item.active {
+  background: #fff1f2;
+  color: #E91E63;
+}
+
+/* Global Body Background */
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+  color: #1e293b;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+}
+
+/* Mobile Breakpoint for Navbar - INCREASED TO 1024px */
+@media (max-width: 1024px) {
+  .desktop-menu {
+    display: none !important;
+  }
+
+  .hamburger-btn {
+    display: block !important;
+  }
+
+  .mobile-menu.open {
+    display: flex !important;
+  }
+
+  .navbar-container {
+    padding: 0 16px;
+    height: 80px;
+  }
+
+  .mobile-menu {
+    top: 80px;
+  }
+}
+
+/* KPI Cards Responsive */
+.kpi-container {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  /* Always allow wrapping */
+}
+
+@media (max-width: 600px) {
+  .card {
+    min-width: 0;
+    /* Allow shrinking below 240px if needed */
+    width: 100%;
+    /* Take full available width */
+  }
+}
+
+/* Prevent inputs/selects from overflowing */
+input,
+select {
+  max-width: 100%;
 }
