@@ -11,7 +11,7 @@ export default function SmartCentreLocator() {
     setError(null);
     try {
       const query = new URLSearchParams(params).toString();
-      const res = await fetch(`http://localhost:8000/centers?${query}`);
+      const res = await fetch(`https://aadharinsights-backend.onrender.com/centers?${query}`);
       const data = await res.json();
       setCentres(data);
     } catch (err) {

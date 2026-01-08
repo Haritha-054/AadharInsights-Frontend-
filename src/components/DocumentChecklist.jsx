@@ -8,7 +8,7 @@ export default function DocumentChecklist() {
 
     useEffect(() => {
         // Fetch available services on mount
-        fetch("http://localhost:8000/services")
+        fetch("https://aadharinsights-backend.onrender.com/services")
             .then((res) => res.json())
             .then((data) => {
                 setServices(data);
@@ -23,7 +23,7 @@ export default function DocumentChecklist() {
         if (!selectedService) return;
 
         setLoading(true);
-        fetch(`http://localhost:8000/documents?service_id=${selectedService}`)
+        fetch(`https://aadharinsights-backend.onrender.com/documents?service_id=${selectedService}`)
             .then((res) => res.json())
             .then((data) => {
                 setDocuments(data.documents || []);
